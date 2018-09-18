@@ -15,4 +15,12 @@ module.exports = merge(common, {
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 	],
+	module: {
+		rules: [
+			{
+		        test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+		    },
+		],
+	},
 });

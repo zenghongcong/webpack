@@ -8,7 +8,7 @@ module.exports = {
 		print: './src/print.js',
 	},
 	output: {
-		filename: '[name].bundle.js',
+		filename: '[name].[hash].js',
 		path: path.resolve(__dirname, 'dist'),
 	},
 	plugins: [
@@ -45,10 +45,6 @@ module.exports = {
 					loader: "babel-loader"
 				}
 			},
-			{
-		        test: /\.css$/,
-				use: ['style-loader', 'css-loader']
-		    },
 		    {
 				test: /\.(gif|png|jpg)$/i,
 				use: [
