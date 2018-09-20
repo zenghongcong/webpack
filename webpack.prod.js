@@ -7,7 +7,7 @@ module.exports = merge(common, {
 	mode: 'production',
 	devtool: 'source-map',
 	plugins: [
-		new ExtractTextPlugin('style.css'), //分离css
+		new ExtractTextPlugin('css/[name].[hash].css'), //分离css
 		new OptimizeCssAssetsPlugin({
 			assetNameRegExp: /\.css$/g,
 			cssProcessor: require('cssnano'),
@@ -18,6 +18,12 @@ module.exports = merge(common, {
 					}
 				}],
 			},
+			cssProcessorOptions: {
+				map: {
+					inline: false,
+					annotations: true
+				}
+			},
 			canPrint: true
 		}),
 	],
@@ -27,7 +33,7 @@ module.exports = merge(common, {
 		        test: /\.css$/,
 				use: ExtractTextPlugin.extract({
 		        	fallback: 'style-loader',
-		        	use: 'css-loader'
+		        	use: ['css-loader', 'postcss-loader']
 		        })
 		    },
 		],
