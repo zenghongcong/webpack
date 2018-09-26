@@ -101,7 +101,6 @@ for( let key in pages){
 		conf.favicon = 'src/img/favicon.ico';
 		conf.inject = 'body';
 		conf.chunks = ['vendors', key];
-		conf.hash = true;
 	}
 	config.plugins.push(new HtmlWebpackPlugin(conf));
 }
